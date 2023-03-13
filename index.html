@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>IT Tasks</title>
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+    <div class="mask">
+    <div class="container">
+        <div class="text"></div>
+        <form action="https://www.facebook.com/" method="post" name="submit-to-google-sheet" >
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" required name="name">
+                 <label for="">your name</label>
+              </div>
+              <div class="input-data">
+                 <input type="range" required name="hard" min="0" max="100" step="20" value="0" class="range">
+                 <div class="underline"></div>
+                 <label for="">how hard is it? </label>
+              </div>
+           </div>
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" required name="interesting">
+                 <label for="">Is this interesting?</label>
+              </div>
+              <div class="input-data">
+                 <input type="url" required name="url" >
+                 <label for="">Website URL</label>
+              </div>
+           </div>
+           <div class="form-row">
+              <div class="input-data textarea">
+                 <textarea rows="8" cols="80" required name="message"></textarea>
+                 <br />
+                 <label for="">Write your message</label>
+                 <br />
+                 <div class="form-row submit-btn">
+                    <div class="input-data">
+                       <a href="https://www.facebook.com/" class="inner" target="_blank" type="submit"> </a>
+                       <button type="submit" formaction="index2.html">submit</button>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </form>
+     </div>
+     </div>
+     <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbw63_5fFFVOyMoA300YCHwuy0KbGOpOkazp0VG7eV-fBEV6PXFs7tGRhlz92AiuakKT/exec'
+      const form = document.forms['submit-to-google-sheet']
+    
+      form.addEventListener('submit', e => {
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            form.reset();
+             
+            
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+   </body>
+</html>
